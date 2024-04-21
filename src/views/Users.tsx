@@ -11,10 +11,10 @@ const Users = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch('https://gorest.co.in/public/v2/users?page=1&per_page=5');
+        const response = await fetch('https://gorest.co.in/public/v2/users?page=1&per_page=10');
         const data = await response.json();
 
-        setUsers(data);
+        setUsers(data.sort((a: User, b: User) => a.name > b.name));
       } catch (error) {
         console.log(error);
       }
@@ -23,7 +23,7 @@ const Users = () => {
 
   return (
     <main id="user">
-      <SearchBar />
+      <SearchBar setUsers={setUsers} />
       <div className="users-container">
         {users.map((user) => (
           <UserCard key={user.id} {...user} />
