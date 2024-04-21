@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import '@/styles/globals.scss';
+import Navbar from '@/views/Navbar';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,7 +24,10 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
