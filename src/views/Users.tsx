@@ -24,9 +24,11 @@ const Users = () => {
   return (
     <main id="user">
       <SearchBar />
-      {users.map((user) => (
-        <UserCard key={user.id} {...user} />
-      ))}
+      <div className="users-container">
+        {users.map((user) => (
+          <UserCard key={user.id} {...user} />
+        ))}
+      </div>
     </main>
   );
 };
