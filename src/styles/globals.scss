@@ -66,6 +66,7 @@
 html,
 body {
   max-width: 100dvw;
+  min-height: 100vh;
   color: var(--clr-text-light-dark);
   background-color: var(--clr-lighter);
   scroll-behavior: smooth;
