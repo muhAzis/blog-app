@@ -1,0 +1,28 @@
+#searchBar {
+  display: flex;
+  padding: 15px 20px;
+  gap: 5px;
+  background-color: var(--clr-white);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+
+  .input-col {
+    flex: 1;
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+
+  .submit-btn {
+    background-color: transparent;
+    border: none;
+    opacity: 0.3;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
