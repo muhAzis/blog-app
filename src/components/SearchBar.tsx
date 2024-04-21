@@ -4,25 +4,28 @@ import { User } from '@/types/user.type';
 
 interface Props {
   setUsers: (users: User[]) => void;
+  setLoading: (loading: boolean) => void;
 }
 
-const SearchBar = ({ setUsers }: Props) => {
+const SearchBar = ({ setUsers, setLoading }: Props) => {
   const [input, setInput] = useState<string>('');
 
   useEffect(() => {
     (async () => {
       try {
         if (input.length > 0) {
+          setLoading(true);
           const response = await fetch(`https://gorest.co.in/public/v2/users?name=${input}`);
           const data = await response.json();
 
           setUsers(data.sort((a: User, b: User) => a.name > b.name));
+          setLoading(false);
         }
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [input, setUsers]);
+  }, [input, setUsers, setLoading]);
 
   return (
     <div id="searchBar">
