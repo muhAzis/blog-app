@@ -54,12 +54,9 @@ const PostCard = ({ id, user_id, title, body }: Post) => {
         {comments?.length} comments
       </Link>
       <div className="comments-container">
-        <div className="line" />
-        <div className="comments">
-          {comments.map((comment, index) => (
-            <CommentCard key={comment.id} {...comment} />
-          ))}
-        </div>
+        {comments.map((comment, index) => (
+          <CommentCard key={comment.id} {...comment} />
+        ))}
       </div>
     </div>
   );

@@ -14,7 +14,10 @@ const CommentCard = ({ id, post_id, name, email, body }: Comment) => {
   return (
     <div className="commentCard">
       <div className="col1">
-        <div className="line" />
+        <div className="lines">
+          <div className="line" />
+          <div className="line2" />
+        </div>
         <Link href="" className="profile-pict" style={{ backgroundColor: generateWarmRGB() }}>
           {name.slice(0, 2)}
         </Link>
