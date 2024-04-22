@@ -17,8 +17,8 @@ const PostCard = ({ id, user_id, title, body }: Post) => {
         const response2 = await fetch(`https://gorest.co.in/public/v2/posts/${id}/comments`);
         const data = await response.json();
         const data2 = await response2.json();
-        console.log({ data, data2 });
-        data.message = 'Resource not found' ? '' : setName(data.name);
+
+        if (data.name != undefined) setName(data.name);
         setComments(data2);
       } catch (error) {
         console.log(error);

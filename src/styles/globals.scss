@@ -57,6 +57,15 @@
   --box-shadow-button: 0 0 10px 5px var(--clr-cheesy-yellow);
 }
 
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
