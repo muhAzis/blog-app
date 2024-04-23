@@ -1,0 +1,21 @@
+.call-to-action {
+  display: flex;
+  padding: 5px 10px;
+  gap: 5px;
+  color: var(--clr-text-white);
+  background-color: var(--clr-green);
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-small);
+  transition: background-color 0.2s ease;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--clr-yellow);
+  }
+
+  .cta-icon {
+    font-size: 1.2rem;
+  }
+}
