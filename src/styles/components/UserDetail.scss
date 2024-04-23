@@ -1,0 +1,32 @@
+#userDetail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--clr-light);
+  border-radius: 20px;
+
+  .item {
+    display: flex;
+    padding-block: 5px;
+    border-bottom: 1px solid var(--clr-lighter);
+    align-items: center;
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .label {
+      min-width: 80px;
+      font-weight: 700;
+    }
+
+    .value {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
