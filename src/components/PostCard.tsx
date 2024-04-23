@@ -5,9 +5,17 @@ import Link from 'next/link';
 import CommentCard from './CommentCard';
 import { Comment } from '@/types/comment.type';
 import { Post } from '@/types/post.type';
+import ProfilePict from './ProfilePict';
+import { User } from '@/types/user.type';
 
 const PostCard = ({ id, user_id, title, body }: Post) => {
-  const [name, setName] = useState<string>('Unknown');
+  const [user, setUser] = useState<User>({
+    id: 0,
+    name: 'Unknown',
+    email: 'Unknown',
+    gender: 'male',
+    status: 'inactive',
+  });
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
@@ -18,7 +26,7 @@ const PostCard = ({ id, user_id, title, body }: Post) => {
         const data = await response.json();
         const data2 = await response2.json();
 
-        if (data.name != undefined) setName(data.name);
+        if (data.name != undefined) setUser(data);
         setComments(data2);
       } catch (error) {
         console.log(error);
@@ -26,25 +34,16 @@ const PostCard = ({ id, user_id, title, body }: Post) => {
     })();
   }, [user_id, id]);
 
-  const generateWarmRGB = () => {
-    const r = Math.floor(Math.random() * 150) + 40;
-    const g = Math.floor(Math.random() * 150) + 40;
-    const b = Math.floor(Math.random() * 150) + 40;
-    return `rgb(${r}, ${g}, ${b})`;
-  };
-
   return (
     <div className="post-card">
       <div className="content">
         <div className="col1">
-          <Link href="" className="profile-pict" style={{ backgroundColor: generateWarmRGB() }}>
-            {name.slice(0, 2)}
-          </Link>
+          <ProfilePict name={user.name} status={user.status} href="" />
           <div className="line" />
         </div>
         <div className="col2">
           <Link href="" className="post-user">
-            {name}
+            {user.name}
           </Link>
           <h4 className="post-title">{title}</h4>
           <p className="post-body">{body}</p>

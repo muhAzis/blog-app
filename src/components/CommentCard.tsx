@@ -2,15 +2,9 @@ import React from 'react';
 import '@/styles/components/CommentCard.scss';
 import Link from 'next/link';
 import { Comment } from '@/types/comment.type';
+import ProfilePict from './ProfilePict';
 
 const CommentCard = ({ id, post_id, name, email, body }: Comment) => {
-  const generateWarmRGB = () => {
-    const r = Math.floor(Math.random() * 150) + 40;
-    const g = Math.floor(Math.random() * 150) + 40;
-    const b = Math.floor(Math.random() * 150) + 40;
-    return `rgb(${r}, ${g}, ${b})`;
-  };
-
   return (
     <div className="commentCard">
       <div className="col1">
@@ -18,9 +12,7 @@ const CommentCard = ({ id, post_id, name, email, body }: Comment) => {
           <div className="line" />
           <div className="line2" />
         </div>
-        <Link href="" className="profile-pict" style={{ backgroundColor: generateWarmRGB() }}>
-          {name.slice(0, 2)}
-        </Link>
+        <ProfilePict name={name} href="" />
       </div>
       <div className="col2">
         <Link href="" className="post-user">

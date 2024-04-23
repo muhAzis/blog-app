@@ -4,24 +4,7 @@
 
   .col1 {
     display: flex;
-    height: fit-content;
     gap: 5px;
-
-    .profile-pict {
-      display: flex;
-      width: 40px;
-      height: 40px;
-      color: var(--clr-text-white);
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 0;
-      background-color: var(--clr-light);
-      border: 2px solid var(--clr-light);
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
 
     .lines {
       position: relative;
@@ -39,8 +22,8 @@
       .line2 {
         position: absolute;
         width: 20px;
-        height: 50px;
-        top: 45%;
+        height: 100%;
+        top: 20px;
         margin-left: 0;
         border-left: 2px solid var(--clr-green);
       }
