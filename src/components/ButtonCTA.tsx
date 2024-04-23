@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
   bi_icon?: string;
   iconPos?: 'left' | 'right';
-  action: () => {};
+  action: () => void;
 }
 
 const ButtonCTA = ({ children, bi_icon, iconPos = 'left', action }: Props) => {

@@ -8,15 +8,14 @@
   font-weight: 500;
   line-height: 0;
   background-color: var(--clr-light);
-  border: 2px solid var(--clr-light);
   border-radius: 50%;
   align-items: center;
   justify-content: center;
 
   .status {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 25%;
+    height: 25%;
     bottom: 0;
     right: 0;
     border-radius: 50%;

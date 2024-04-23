@@ -1,5 +1,5 @@
 'use client';
-import { User } from '@/types/user.type';
+import { User, UserInput } from '@/types/user.type';
 import React, { createContext, useEffect, useState } from 'react';
 
 export const UsersContext = createContext({
@@ -10,6 +10,8 @@ export const UsersContext = createContext({
   nextPage: () => {},
   fetchUsers: () => {},
   fetchUsersByName: (name: string) => {},
+  addUser: ({ name, email, gender, status }: UserInput) => {},
+  updateUser: ({ id, name, email, gender, status }: User) => {},
   deleteUser: (user_id: number) => {},
 });
 
@@ -58,6 +60,62 @@ const UsersContextProvider = ({ children }: Props) => {
     }
   };
 
+  const addUser = async ({ name, email, gender, status }: UserInput) => {
+    try {
+      const response = await fetch('https://gorest.co.in/public/v2/users', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          gender,
+          status,
+        }),
+      });
+
+      if (response.status === 201) {
+        fetchUsers(true);
+        alert('User added successfully!');
+      } else {
+        alert('Failed to add user!');
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateUser = async ({ id, name, email, gender, status }: User) => {
+    try {
+      const response = await fetch(`https://gorest.co.in/public/v2/users/${id}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          gender,
+          status,
+        }),
+      });
+
+      if (response.status === 200) {
+        fetchUsers(true);
+        alert('User edited successfully!');
+      } else {
+        alert('Failed to edit user!');
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deleteUser = async (user_id: number) => {
     try {
       setLoading(true);
@@ -92,6 +150,8 @@ const UsersContextProvider = ({ children }: Props) => {
     nextPage,
     fetchUsers,
     fetchUsersByName,
+    addUser,
+    updateUser,
     deleteUser,
   };
 

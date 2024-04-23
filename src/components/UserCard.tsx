@@ -4,15 +4,28 @@ import Link from 'next/link';
 import React from 'react';
 import { useUsers } from '@/hooks/useUsers';
 import ProfilePict from './ProfilePict';
+import { usePopup } from '@/hooks/usePopup';
 
 const UserCard = ({ id, name, email, gender, status }: User) => {
   const { deleteUser } = useUsers();
+  const { setIsVisible, setPopupData } = usePopup();
 
-  const generateWarmRGB = () => {
-    const r = Math.floor(Math.random() * 150) + 40;
-    const g = Math.floor(Math.random() * 150) + 40;
-    const b = Math.floor(Math.random() * 150) + 40;
-    return `rgb(${r}, ${g}, ${b})`;
+  const handleDelete = () => {
+    const response = confirm(`Are you sure you want to delete ${name}?`);
+    if (response) {
+      deleteUser(id);
+    }
+  };
+
+  const handleEdit = () => {
+    setPopupData({
+      id,
+      name,
+      email,
+      gender,
+      status,
+    });
+    setIsVisible(true);
   };
 
   return (
@@ -26,8 +39,8 @@ const UserCard = ({ id, name, email, gender, status }: User) => {
         <span className="user-gender">Gender: {gender}</span>
       </div>
       <div className="action-buttons">
-        <button className="bi bi-pencil-fill action-btn" />
-        <button className="bi bi-trash3-fill action-btn" onClick={() => deleteUser(id)} />
+        <button className="bi bi-pencil-fill action-btn" onClick={handleEdit} />
+        <button className="bi bi-trash3-fill action-btn" onClick={handleDelete} />
       </div>
     </div>
   );

@@ -8,7 +8,11 @@ const SearchBar = () => {
   const [input, setInput] = useState<string>('');
 
   useEffect(() => {
-    fetchUsersByName(input);
+    const delayDebounceFn = setTimeout(() => {
+      fetchUsersByName(input);
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
   }, [input]);
 
   return (

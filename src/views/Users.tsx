@@ -6,9 +6,11 @@ import UserCard from '@/components/UserCard';
 import SearchBar from '@/components/SearchBar';
 import { useUsers } from '@/hooks/useUsers';
 import ButtonCTA from '@/components/ButtonCTA';
+import { usePopup } from '@/hooks/usePopup';
 
 const Users = () => {
   const { users, loading, endOfPage, setLoading, nextPage, deleteUser } = useUsers();
+  const { setIsVisible } = usePopup();
   const loaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const Users = () => {
     <main id="user">
       <SearchBar />
       <div className="cta-container">
-        <ButtonCTA action={() => ''} bi_icon="bi bi-person-fill-add">
+        <ButtonCTA action={() => setIsVisible(true)} bi_icon="bi bi-person-fill-add">
           Add user
         </ButtonCTA>
       </div>

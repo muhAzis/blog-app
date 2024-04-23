@@ -1,14 +1,18 @@
+'use client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import '@/styles/components/ProfilePict.scss';
 
 interface Props {
   name: string;
   status?: string;
   href: string;
+  style?: React.CSSProperties;
+  color?: string;
+  setColor?: (color: string) => void;
 }
 
-const ProfilePict = ({ name, status, href }: Props) => {
+const ProfilePict = ({ name, status, href, style, color, setColor }: Props) => {
   const generateWarmRGB = () => {
     const r = Math.floor(Math.random() * 150) + 40;
     const g = Math.floor(Math.random() * 150) + 40;
@@ -16,8 +20,12 @@ const ProfilePict = ({ name, status, href }: Props) => {
     return `rgb(${r}, ${g}, ${b})`;
   };
 
+  useEffect(() => {
+    if (setColor !== undefined) setColor(generateWarmRGB());
+  }, [setColor]);
+
   return (
-    <Link href={href} className="profile-pict" style={{ backgroundColor: generateWarmRGB() }}>
+    <Link href={href} className="profile-pict" style={{ ...style, backgroundColor: color !== undefined ? color : generateWarmRGB() }}>
       {name.slice(0, 2)}
       {status && <span className={status === 'active' ? 'status active' : 'status inactive'} />}
     </Link>

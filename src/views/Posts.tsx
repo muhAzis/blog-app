@@ -6,7 +6,7 @@ import { Post } from '@/types/post.type';
 
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [page, setPage] = useState<number>(30);
+  const [page, setPage] = useState<number>(Math.floor(Math.random() * 180) + 1);
   const [loading, setLoading] = useState<boolean>(false);
   const [endOfPage, setEndOfPage] = useState<boolean>(false);
   const loaderRef = useRef<HTMLDivElement>(null);

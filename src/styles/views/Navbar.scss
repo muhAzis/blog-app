@@ -30,6 +30,7 @@
         transition: color 0.2s ease;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
 
         &:hover {
           color: var(--clr-text-green);
