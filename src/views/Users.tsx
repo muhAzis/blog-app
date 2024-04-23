@@ -1,33 +1,46 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '@/styles/views/Users.scss';
 import { User } from '@/types/user.type';
 import UserCard from '@/components/UserCard';
 import SearchBar from '@/components/SearchBar';
+import { useUsers } from '@/hooks/useUsers';
+import ButtonCTA from '@/components/ButtonCTA';
 
 const Users = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const { users, loading, endOfPage, setLoading, nextPage, deleteUser } = useUsers();
+  const loaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('https://gorest.co.in/public/v2/users?page=1&per_page=10');
-        const data = await response.json();
+    const isInView = () => {
+      if (loaderRef.current) {
+        const rect = loaderRef.current.getBoundingClientRect();
 
-        setUsers(data.sort((a: User, b: User) => a.name > b.name));
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
+        if (rect.top < window.innerHeight) {
+          setLoading(true);
+          nextPage();
+        }
       }
-    })();
+    };
+
+    window.addEventListener('scroll', () => isInView());
+
+    return () => window.removeEventListener('scroll', () => isInView());
   }, []);
 
   return (
     <main id="user">
-      <SearchBar setUsers={setUsers} setLoading={setLoading} />
-      <div className="users-container">{loading ? <div className="loading-spinner" /> : users.length > 0 ? users.map((user) => <UserCard key={user.id} {...user} />) : 'user not found'}</div>
+      <SearchBar />
+      <div className="cta-container">
+        <ButtonCTA action={() => ''} bi_icon="bi bi-person-fill-add">
+          Add user
+        </ButtonCTA>
+      </div>
+      <div className="users-container">
+        {users.length > 0 ? users.map((user) => <UserCard key={user.id} {...user} />) : 'user not found'}
+        {loading && <div className="loading-spinner" />}
+      </div>
+      {!loading && !endOfPage && <div ref={loaderRef} className="loader" style={{ width: 100, height: 50 }} />}
     </main>
   );
 };

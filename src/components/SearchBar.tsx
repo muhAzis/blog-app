@@ -1,31 +1,15 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import '@/styles/components/SearchBar.scss';
-import { User } from '@/types/user.type';
+import { useUsers } from '@/hooks/useUsers';
 
-interface Props {
-  setUsers: (users: User[]) => void;
-  setLoading: (loading: boolean) => void;
-}
-
-const SearchBar = ({ setUsers, setLoading }: Props) => {
+const SearchBar = () => {
+  const { fetchUsersByName } = useUsers();
   const [input, setInput] = useState<string>('');
 
   useEffect(() => {
-    (async () => {
-      try {
-        if (input.length > 0) {
-          setLoading(true);
-          const response = await fetch(`https://gorest.co.in/public/v2/users?name=${input}`);
-          const data = await response.json();
-
-          setUsers(data.sort((a: User, b: User) => a.name > b.name));
-          setLoading(false);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, [input, setUsers, setLoading]);
+    fetchUsersByName(input);
+  }, [input]);
 
   return (
     <div id="searchBar">
