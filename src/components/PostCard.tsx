@@ -38,20 +38,18 @@ const PostCard = ({ id, user_id, title, body }: Post) => {
     <div className="post-card">
       <div className="content">
         <div className="col1">
-          <ProfilePict name={user.name} status={user.status} href="" />
+          <ProfilePict name={user.name} status={user.status} href={`/users/${id}`} />
           <div className="line" />
         </div>
         <div className="col2">
-          <Link href="" className="post-user">
+          <Link href={`/users/${id}`} className="post-user">
             {user.name}
           </Link>
           <h4 className="post-title">{title}</h4>
           <p className="post-body">{body}</p>
         </div>
       </div>
-      <Link href="" className="comments-count">
-        {comments?.length} comments
-      </Link>
+      <div className="comments-count">{comments?.length} comments</div>
       <div className="comments-container">
         {comments.map((comment, index) => (
           <CommentCard key={comment.id} {...comment} />

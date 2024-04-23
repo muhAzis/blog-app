@@ -12,10 +12,10 @@ const CommentCard = ({ id, post_id, name, email, body }: Comment) => {
           <div className="line" />
           <div className="line2" />
         </div>
-        <ProfilePict name={name} href="" />
+        <ProfilePict name={name} href={`/users/${id}`} />
       </div>
       <div className="col2">
-        <Link href="" className="post-user">
+        <Link href={`/users/${id}`} className="post-user">
           {name}
         </Link>
         <p className="post-body">{body}</p>

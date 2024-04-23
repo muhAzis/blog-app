@@ -24,11 +24,16 @@ const ProfilePict = ({ name, status, href, style, color, setColor }: Props) => {
     if (setColor !== undefined) setColor(generateWarmRGB());
   }, [setColor]);
 
-  return (
+  return name !== 'Unknown' ? (
     <Link href={href} className="profile-pict" style={{ ...style, backgroundColor: color !== undefined ? color : generateWarmRGB() }}>
       {name.slice(0, 2)}
       {status && <span className={status === 'active' ? 'status active' : 'status inactive'} />}
     </Link>
+  ) : (
+    <div className="profile-pict" style={{ ...style, backgroundColor: color !== undefined ? color : generateWarmRGB() }}>
+      {name.slice(0, 2)}
+      {status && <span className={status === 'active' ? 'status active' : 'status inactive'} />}
+    </div>
   );
 };
 
