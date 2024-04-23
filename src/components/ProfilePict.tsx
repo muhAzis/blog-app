@@ -6,7 +6,7 @@ import '@/styles/components/ProfilePict.scss';
 interface Props {
   name: string;
   status?: string;
-  href: string;
+  href?: string;
   style?: React.CSSProperties;
   color?: string;
   setColor?: (color: string) => void;
@@ -24,7 +24,7 @@ const ProfilePict = ({ name, status, href, style, color, setColor }: Props) => {
     if (setColor !== undefined) setColor(generateWarmRGB());
   }, [setColor]);
 
-  return name !== 'Unknown' ? (
+  return name !== 'Unknown' && href ? (
     <Link href={href} className="profile-pict" style={{ ...style, backgroundColor: color !== undefined ? color : generateWarmRGB() }}>
       {name.slice(0, 2)}
       {status && <span className={status === 'active' ? 'status active' : 'status inactive'} />}

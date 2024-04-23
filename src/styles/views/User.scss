@@ -1,0 +1,21 @@
+#user {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  padding-block: 20px;
+  align-items: center;
+
+  .user-name {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .user-email {
+    width: 100%;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

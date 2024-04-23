@@ -1,7 +1,6 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '@/styles/views/Users.scss';
-import { User } from '@/types/user.type';
 import UserCard from '@/components/UserCard';
 import SearchBar from '@/components/SearchBar';
 import { useUsers } from '@/hooks/useUsers';

@@ -1,4 +1,6 @@
+import User from '@/views/User';
 import React from 'react';
+import '@/styles/views/UserPage.scss';
 
 interface Props {
   params: {
@@ -7,7 +9,11 @@ interface Props {
 }
 
 const UserPage = ({ params }: Props) => {
-  return <main id="userPage">{params.user_id}</main>;
+  return (
+    <main id="userPage">
+      <User user_id={params.user_id} />
+    </main>
+  );
 };
 
 export default UserPage;
