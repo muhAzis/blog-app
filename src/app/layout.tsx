@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google';
 import '@/styles/globals.scss';
 import Navbar from '@/views/Navbar';
 import ContextWrapper from './ContextWrapper';
+import FormWindow from '@/views/FormWindow';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ContextWrapper>
           <Navbar />
           {children}
+          <FormWindow />
         </ContextWrapper>
       </body>
     </html>
