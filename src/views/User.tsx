@@ -42,8 +42,8 @@ const UserContainer = ({ user_id }: Props) => {
           fontSize: '3rem',
         }}
       />
-      <h1 className="user-name">{user.name}</h1>
-      <h4 className="user-email">{user.email}</h4>
+      <h1 className="user-detail-name">{user.name}</h1>
+      <h4 className="user-detail-email">{user.email}</h4>
       <UserDetail {...user} />
     </main>
   );

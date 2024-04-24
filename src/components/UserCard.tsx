@@ -32,7 +32,7 @@ const UserCard = ({ id, name, email, gender, status }: User) => {
     <div className="user-card">
       <ProfilePict name={name} status={status} href="" />
       <div className="user-info">
-        <Link href="" className="user-name">
+        <Link href={`/users/${id}`} className="user-name">
           {name}
         </Link>
         <span className="user-email">{email}</span>
