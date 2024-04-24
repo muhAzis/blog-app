@@ -58,7 +58,7 @@ const UserForm = () => {
       <div className="form-container" onClick={handleClose}>
         <form className="user-form" onClick={(e) => e.stopPropagation()} onSubmit={(e) => handleSubmit(e)}>
           <div className="profile-header">
-            <ProfilePict status={active ? 'active' : 'inactive'} name={name.length > 0 ? name : 'Us'} href="" color={color} setColor={setColor} style={{ width: 80, height: 80, fontSize: '2rem' }} />
+            <ProfilePict status={active ? 'active' : 'inactive'} name={name.length > 0 ? name : 'Us'} href="" color={color} setColor={setColor} style={{ minWidth: 80, height: 80, fontSize: '2rem' }} />
             <div className="info">
               <input value={name} className="input-name" type="text" placeholder="Username" onChange={(e) => setName(e.target.value)} required />
               <input value={email} className="input-email" type="text" placeholder="username@example.com" onChange={(e) => setEmail(e.target.value)} required />
