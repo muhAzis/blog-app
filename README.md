@@ -10,6 +10,10 @@ powered by:
 
 This is a blog app created with [Next.js](https://nextjs.org/) using [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). and also using dummy data from [Go REST](https://gorest.co.in/). It contains certain main page such as posts page and users page and profile.
 
+### _Live App Demo_
+
+[https://dummyblogapp.vercel.app](https://dummyblogapp.vercel.app/)
+
 ## Key Features
 
 - Viewing Posts with it's detail such as user and the comments
