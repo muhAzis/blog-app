@@ -30,7 +30,7 @@ const Users = () => {
   }, []);
 
   return (
-    <main id="user">
+    <main id="users">
       <SearchBar />
       <div className="cta-container">
         <ButtonCTA action={() => setIsVisible(true)} bi_icon="bi bi-person-fill-add">
