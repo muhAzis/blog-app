@@ -18,6 +18,7 @@ This is a blog app created with [Next.js](https://nextjs.org/) using [`create-ne
 
 - Viewing Posts with it's detail such as user and the comments
 - Viewing Post's comments right bellow the post
+- Pagination/infinite scrolling method for fetching data
 - User search and CRUD operation
 - Responsive styling
 
